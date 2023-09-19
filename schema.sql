@@ -64,3 +64,28 @@ SELECT id, name, species_id, owner_id FROM animals;
 COMMIT;
 -- verify
 SELECT id, name, species_id, owner_id FROM animals;
+
+
+
+
+
+/* PROJECT 4 */
+-- create vets table
+CREATE TABLE vets(
+    id INT GENERATED ALWAYS AS IDENTITY,
+    name VARCHAR(250),
+    age INT,
+    date_of_graduation DATE,
+    PRIMARY KEY(id)
+);
+-- create specializations join table
+CREATE TABLE specializations(
+    vet_id INT,
+    species_id INT
+);
+-- create visits join table
+CREATE TABLE visits(
+    animal_id INT,
+    vet_id INT,
+    date_of_visit DATE
+);
