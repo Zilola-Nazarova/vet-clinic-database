@@ -58,3 +58,33 @@ SELECT id, name, species_id FROM animals;
 COMMIT;
 
 SELECT id, name, species_id FROM animals;
+
+
+-- add owner_id to animals table
+BEGIN;
+
+UPDATE animals 
+SET owner_id = (SELECT id from owners WHERE full_name = 'Sam Smith')
+WHERE name = 'Agumon';
+
+UPDATE animals 
+SET owner_id = (SELECT id from owners WHERE full_name = 'Jennifer Orwell')
+WHERE name IN ('Gabumon', 'Pikachu');
+
+UPDATE animals 
+SET owner_id = (SELECT id from owners WHERE full_name = 'Bob')
+WHERE name IN ('Devimon', 'Plantmon');
+
+UPDATE animals 
+SET owner_id = (SELECT id from owners WHERE full_name = 'Melody Pond')
+WHERE name IN ('Charmander', 'Squirtle', 'Blossom');
+
+UPDATE animals 
+SET owner_id = (SELECT id from owners WHERE full_name = 'Dean Winchester')
+WHERE name IN ('Angemon', 'Boarmon');
+
+SELECT id, name, owner_id FROM animals;
+
+COMMIT;
+
+SELECT id, name, owner_id FROM animals;
