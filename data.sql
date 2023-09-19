@@ -40,3 +40,21 @@ VALUES
 --verify
 SELECT * FROM owners;
 SELECT * FROM species;
+
+
+-- add species_id to animals table
+BEGIN;
+
+UPDATE animals 
+SET species_id = (SELECT id from species WHERE name = 'Digimon')
+WHERE name LIKE '%mon';
+
+UPDATE animals 
+SET species_id = (SELECT id from species WHERE name = 'Pokemon')
+WHERE species_id IS NULL;
+
+SELECT id, name, species_id FROM animals;
+
+COMMIT;
+
+SELECT id, name, species_id FROM animals;
