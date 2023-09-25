@@ -7,7 +7,8 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 - Use [schema.sql](./schema.sql) to create all tables.
 - Use [data.sql](./data.sql) to populate tables with sample data.
-- Check [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database. **Important note: this file might include queries that make changes in the database (e.g., remove records). Use them responsibly!**
+- Check [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database.
+**Important note: this file might include queries that make changes in the database (e.g., remove records). Use them responsibly!**
 
 <a name="readme-top"></a>
 
@@ -42,8 +43,10 @@ This repository includes files with plain SQL that can be used to recreate a dat
 **[Vet clinic database]** is a relational database created for a vet clinic. It consists of tables with data about:
 
 - animals
+- animals species
 - animals' owners
-- clinic employees
+- clinic employees (vets)
+- vets specializations
 - visits
 
 ## 🛠 Built With <a name="built-with"></a>
@@ -60,9 +63,13 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 ### Key Features <a name="key-features"></a>
 
-- **[create_table]**
-- **[add_data]**
-- **[query_data]**
+- **create new table, alter existing table**
+- **add primary and foreign keys**
+- **add data to existing table**
+- **query data**
+- **aggregate functions, groups**
+- **join tables**
+- **explain analyze**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -83,20 +90,26 @@ To get a local copy up and running, follow these steps.
 
 ### Prerequisites
 
-In order to run this project you need:
+In order to open and read this project you need:
 
-psql installed
-(command for Ubuntu WSL)
-```
- sudo apt install postgresql postgresql-contrib
-```
+- gitHub account;
+- git installed on your OS;
+- VSCode (or another code editor).
 
-PostgreSQL server running
-(command for Ubuntu WSL)
-```
- sudo service postgresql start
- sudo -u postgres psql
-```
+In order to implement commands listed in this project you need:
+
+- psql installed
+  (command for Ubuntu WSL)
+  ```
+  sudo apt install postgresql postgresql-contrib
+  ```
+
+- PostgreSQL server running
+  (command for Ubuntu WSL)
+  ```
+  sudo service postgresql start
+  sudo -u postgres psql
+  ```
 
 Follow instuctions on [PostgreSQL](https://www.postgresql.org/download/) official website.
 
@@ -109,13 +122,22 @@ Clone this repository to your desired folder:
   git clone git@github.com:Zilola-Nazarova/vet-clinic-database/
 ```
 
+Create your own database and run it:
+```
+CREATE DATABASE db_name
+psql db_name
+```
+
 ### Install
 
 Installation steps will be described in future branches.
 
 ### Usage
 
-Steps for running the server will be described in future branches.
+- Use [schema.sql](./schema.sql) to create all tables.
+- Use [data.sql](./data.sql) to populate tables with sample data.
+- Check [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database.
+**Important note: this file might include queries that make changes in the database (e.g., remove records). Use them responsibly!**
 
 ### Run tests
 
@@ -137,15 +159,19 @@ Deployment steps will be described in future branches.
 - Twitter: [@NazarovaZi](https://twitter.com/NazarovaZi)
 - LinkedIn: [in/zilola-nazarova](https://www.linkedin.com/in/zilola-nazarova)
 
+👤 Amin Alizadeh
+
+- GitHub: [@M-AminAlizadeh](https://github.com/M-AminAlizadeh)
+- Twitter: [@Mamin_alizadeh](https://twitter.com/Mamin_alizadeh)
+- LinkedIn: [in/m-amin-alizadeh](https://www.linkedin.com/in/m-amin-alizadeh/)
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
 
 ## 🔭 Future Features <a name="future-features"></a>
 
-- [ ] **[add_animals'_owners_table]**
-- [ ] **[add_clinic_employees_table]**
-- [ ] **[add_visits_table]**
+- [ ] **add schema diagram**
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -187,7 +213,7 @@ I am grateful to all previous project reviewers for their advice. Thanks to them
 
 - **I'm getting error saying 'role "user_name" does not exist'. What should I do?**
 
-  - After running PostgreSQL with psql shell create a role (CREATE ROLE user_name) with the user_name matching the 'user_name' you're getting in the error message.
+  - After running PostgreSQL with psql shell create a role `CREATE ROLE user_name` where the `user_name` matches the 'user_name' you're getting in the error message.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
