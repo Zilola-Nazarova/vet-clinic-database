@@ -339,3 +339,15 @@ WHERE sum = (SELECT MAX(sum) FROM (
   )
   GROUP BY species_id
 ));
+
+
+
+/* PROJECT 5 */
+-- run queries
+SELECT COUNT(*) FROM visits where animal_id = 4;
+SELECT * FROM visits where vet_id = 2;
+SELECT * FROM owners where email = 'owner_18327@mail.com';
+-- analyze query speed
+EXPLAIN ANALYZE SELECT COUNT(*) FROM visits where animal_id = 4;
+EXPLAIN ANALYZE SELECT * FROM visits where vet_id = 2;
+EXPLAIN ANALYZE SELECT * FROM owners where email = 'owner_18327@mail.com';
